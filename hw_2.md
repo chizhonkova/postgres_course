@@ -88,7 +88,7 @@ postgres=*> SELECT * FROM developers;
 (6 rows)
 ```
 
-9. Вижу, потому что данных уровень изоляции позволяет увидеть данные, которые были закоммичены другими транзакциями до начала запроса. Цитата из документации: `When a transaction uses this isolation level, a SELECT query sees only data committed before the query began`.
+9. Новая запись видна, потому что данных уровень изоляции позволяет увидеть данные, которые были закоммичены другими транзакциями до начала запроса. Цитата из документации: `When a transaction uses this isolation level, a SELECT query sees only data committed before the query began`.
 
 10. Завершить транзакцию во второй сессии:
 ```
@@ -152,4 +152,4 @@ postgres=*> SELECT * FROM developers;
 (6 rows)
 ```
 
-17. Не вижу, потому что уровень изоляции repeatable read позволяет видеть только те данные, которые были закоммичены до начала транзакции. Цитата: `The Repeatable Read isolation level only sees data committed before the transaction began; it never sees either uncommitted data or changes committed by concurrent transactions during the transaction's execution.`
+17. Новая запись не видна, потому что уровень изоляции repeatable read позволяет видеть только те данные, которые были закоммичены до начала транзакции. Цитата: `The Repeatable Read isolation level only sees data committed before the transaction began; it never sees either uncommitted data or changes committed by concurrent transactions during the transaction's execution.`
